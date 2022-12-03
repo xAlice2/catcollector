@@ -2,9 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
-
-#Cat models thats connected to the database
+# Cat model that's connected to the Database
 from .models import Cat
+
 
 # temp add Cats class
 # getting rid of this because it exists in models.py
@@ -25,7 +25,7 @@ from .models import Cat
 #     Cat('Raven', 'black tripod', '3 legged cat', 4)
 # ] 
 
-
+# CRUD functions:
 class CatCreate(CreateView):
   model = Cat
   fields = '__all__'
@@ -43,7 +43,6 @@ class CatUpdate(UpdateView):
 class CatDelete(DeleteView):
   model = Cat
   success_url = '/cats'
-
 
 # Create your views here.
 def index(request):
@@ -65,5 +64,4 @@ def cats_index(request):
 
 def cats_show(request, cat_id):
     cat = Cat.objects.get(id=cat_id)
-
     return render(request, 'cats/show.html', { 'cat': cat })

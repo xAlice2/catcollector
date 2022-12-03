@@ -1,11 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1> Show cats! </h1>
-<br>
-<h2>Name: {{ cat.name }}</h2>
+<!-- <h2>Name: {{ cat.name }}</h2>
 <p>Breed: {{ cat.breed }}</p>
-<p>Description: {{ cat.descripton }}</p>
-<p>Age: {{ cat.age }}</p>
+<p>Description: {{ cat.description }}</p>
+<p>Age: {{ cat.age }}</p> -->
+
+<!-- <a href="/cats/" class="btn btn-primary">View All Cats</a> -->
+
+<!-- Add links for update and delete -->
+
+
+
+<div class="card text-center">
+    <div class="card-header">
+       {{ cat.breed }}<br>
+      <img src="https://placekitten.com/408/287" />
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ cat.name }}  (Age: {{ cat.age }})</h5>
+      <p class="card-text">Description: {{ cat.description }}</p>
+      <br>
+
+    </div>
+    <div class="card-footer text-muted">
+        <a href="{% url 'cats_update' cat.id %}" class="btn btn-warning">Update details</a>
+        <a href="{% url 'cats_delete' cat.id %}" class="btn btn-danger">Delete this cat</a>
+    </div>
+  </div>
+
+
+<!-- This also works: -->
+<!-- <a href="/cats/{{ cat.id }}/update" class="btn btn-warning">Update details</a> -->
 <br>
+<small>note: this page is from cats/show.html</small>
+<br>
+
 {% endblock %}
